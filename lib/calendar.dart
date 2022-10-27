@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_week_view/flutter_week_view.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Calendar extends StatefulWidget {
@@ -8,10 +7,10 @@ class Calendar extends StatefulWidget {
   static const String id = 'calendar';
 
   @override
-  State<Calendar> createState() => _CalendarState();
+  State<Calendar> createState() => CalendarState();
 }
 
-class _CalendarState extends State<Calendar> {
+class CalendarState extends State<Calendar> {
   int selectedIndex = 0;
 
   void onItemTapped(int index) {
@@ -19,6 +18,24 @@ class _CalendarState extends State<Calendar> {
       selectedIndex = index;
     });
   }
+
+  List<String> options = [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+    'Option 7',
+    'Option 8',
+    'Option 9',
+    'Option 10',
+    'Option 11',
+    'Option 12',
+    'Option 13',
+    'Option 14',
+  ];
+  String? dropdownValue;
 
   @override
   Widget build(BuildContext context) {
@@ -36,143 +53,275 @@ class _CalendarState extends State<Calendar> {
       body: SfCalendar(
         view: CalendarView.week,
       ),
-
-      // body: DayView(
-      //   date: now,
-      //   events: [
-      //     FlutterWeekViewEvent(
-      //       decoration: const BoxDecoration(
-      //         shape: BoxShape.rectangle,
-      //         color: Colors.green,
-      //       ),
-      //       title: 'John Smith',
-      //       description: 'Hair Treatment',
-      //       start: date.add(const Duration(hours: 9, minutes: 00)),
-      //       end: date.add(const Duration(hours: 9, minutes: 45)),
-      //     ),
-
-      //   ],
-      //   style: DayViewStyle.fromDate(
-      //     date: now,
-      //     currentTimeRuleHeight: 3,
-      //     currentTimeRuleColor: Colors.green,
-      //     currentTimeCircleColor: Colors.green,
-      //     currentTimeCirclePosition: CurrentTimeCirclePosition.left,
-      //     backgroundRulesColor: Colors.white,
-      //   ),
-      // ),
-
-      // body: Column(
-      //   mainAxisAlignment: MainAxisAlignment.start,
-      //   children: [
-      //     Padding(
-      //       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: const [
-      //           Text(
-      //             'June 2022',
-      //             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      //           ),
-      //           Text(
-      //             '<       >',
-      //             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //     Padding(
-      //       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //         children: const [
-      //           Text(
-      //             'Mo',
-      //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-      //           ),
-      //           Text(
-      //             'Tu',
-      //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-      //           ),
-      //           Text(
-      //             'We',
-      //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-      //           ),
-      //           Text(
-      //             'Th',
-      //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-      //           ),
-      //           Text(
-      //             'Fri',
-      //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-      //           ),
-      //           Text(
-      //             'Sa',
-      //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-      //           ),
-      //           Text(
-      //             'Su',
-      //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //     Padding(
-      //       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //         children: const [
-      //           Text(
-      //             '29',
-      //             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-      //           ),
-      //           Text(
-      //             '30',
-      //             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-      //           ),
-      //           Text(
-      //             '31',
-      //             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-      //           ),
-      //           Text(
-      //             '1',
-      //             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-      //           ),
-      //           Text(
-      //             '2',
-      //             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-      //           ),
-      //           Text(
-      //             '3',
-      //             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-      //           ),
-      //           Text(
-      //             '4',
-      //             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //     DayView(
-      //       controller: EventController(),
-      //       eventTileBuilder: (date, events, boundry, start, end) {
-      //         // Return your widget to display as event tile.
-      //         return Container();
-      //       },
-      //       showVerticalLine: true, // To display live time line in day view.
-      //       showLiveTimeLineInAllDays:
-      //           true, // To display live time line in all pages in day view.
-      //       minDay: DateTime(1990),
-      //       maxDay: DateTime(2050),
-      //       initialDay: DateTime(2021),
-      //       heightPerMinute: 1, // height occupied by 1 minute time span.
-      //       eventArranger:
-      //           const SideEventArranger(), // To define how simultaneous events will be arranged.
-      //       onEventTap: (events, date) => print(events),
-      //       onDateLongPress: (date) => print(date),
-      //     ),
-      //   ],
-      // ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          showModalBottomSheet(
+            // backgroundColor: Colors.transparent.withOpacity(0.1),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+            context: context,
+            builder: (BuildContext context) {
+              return SizedBox(
+                height: 470,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Add Appointments/Walk-in',
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 17,
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.cancel, color: Colors.grey),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      const Text('Select contact or leave empty for walk-in'),
+                      const SizedBox(height: 5),
+                      DropdownButtonFormField(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        menuMaxHeight: 400,
+                        decoration: const InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8),
+                            ),
+                            borderSide: BorderSide(color: Colors.green),
+                          ),
+                          contentPadding: EdgeInsets.all(20),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8),
+                            ),
+                            borderSide: BorderSide(color: Colors.green),
+                          ),
+                          hintText: 'N/A',
+                          hintStyle: TextStyle(color: Colors.grey),
+                        ),
+                        items: options.map(
+                          (String value) {
+                            return DropdownMenuItem(
+                              value: value,
+                              child: Text(value),
+                            );
+                          },
+                        ).toList(),
+                        onChanged: (String? value) {
+                          setState(() {
+                            dropdownValue = value.toString();
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      const Text('Select Service'),
+                      const SizedBox(height: 5),
+                      DropdownButtonFormField(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        menuMaxHeight: 400,
+                        decoration: const InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8),
+                            ),
+                            borderSide: BorderSide(color: Colors.green),
+                          ),
+                          contentPadding: EdgeInsets.all(20),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8),
+                            ),
+                            borderSide: BorderSide(color: Colors.green),
+                          ),
+                          hintText: 'Haircut',
+                          hintStyle: TextStyle(color: Colors.grey),
+                        ),
+                        items: options.map(
+                          (String value) {
+                            return DropdownMenuItem(
+                              value: value,
+                              child: Text(value),
+                            );
+                          },
+                        ).toList(),
+                        onChanged: (String? value) {
+                          setState(() {
+                            dropdownValue = value.toString();
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text('Date'),
+                                DropdownButtonFormField(
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                  menuMaxHeight: 400,
+                                  decoration: const InputDecoration(
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                      borderSide:
+                                          BorderSide(color: Colors.green),
+                                    ),
+                                    contentPadding: EdgeInsets.all(20),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                      borderSide:
+                                          BorderSide(color: Colors.green),
+                                    ),
+                                    hintText: 'Today',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                  ),
+                                  items: options.map(
+                                    (String value) {
+                                      return DropdownMenuItem(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    },
+                                  ).toList(),
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      dropdownValue = value.toString();
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 40),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text('Time Slot'),
+                                DropdownButtonFormField(
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                  menuMaxHeight: 400,
+                                  decoration: const InputDecoration(
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                      borderSide:
+                                          BorderSide(color: Colors.green),
+                                    ),
+                                    contentPadding: EdgeInsets.all(20),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                      borderSide:
+                                          BorderSide(color: Colors.green),
+                                    ),
+                                    hintText: '4:00-4:45am',
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                  ),
+                                  items: options.map(
+                                    (String value) {
+                                      return DropdownMenuItem(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    },
+                                  ).toList(),
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      dropdownValue = value.toString();
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                const Color(0xFFEEEEEE),
+                              ),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  // side: BorderSide(color: Colors.red),
+                                ),
+                              ),
+                            ),
+                            child: const Text(
+                              'CANCEL',
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          TextButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                const Color(0xFF4CAF50),
+                              ),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  // side: BorderSide(color: Colors.red),
+                                ),
+                              ),
+                            ),
+                            child: const Text(
+                              'SAVE',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(

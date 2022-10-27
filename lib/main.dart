@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learner_testin/calendar.dart';
 import 'package:learner_testin/dashboard.dart';
+import 'package:learner_testin/notifacation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,10 +17,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: Calendar.id,
+      initialRoute: Notifacation.id,
       routes: {
         Dashboard.id: (context) => const Dashboard(),
         Calendar.id: (context) => const Calendar(),
+        Notifacation.id:(context) => const Notifacation(),
       },
     );
   }
