@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: Notifacation.id,
+      initialRoute: Calendar.id,
       routes: {
         Dashboard.id: (context) => const Dashboard(),
         Calendar.id: (context) => const Calendar(),
-        Notifacation.id:(context) => const Notifacation(),
+        Notifacation.id: (context) => const Notifacation(),
       },
     );
   }

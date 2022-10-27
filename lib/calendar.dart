@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -12,6 +13,10 @@ class Calendar extends StatefulWidget {
 
 class CalendarState extends State<Calendar> {
   int selectedIndex = 0;
+  TextEditingController _contactControoler = TextEditingController();
+  TextEditingController _serviceControoler = TextEditingController();
+  TextEditingController _dateControoler = TextEditingController();
+  TextEditingController _timeControoler = TextEditingController();
 
   void onItemTapped(int index) {
     setState(() {
@@ -35,7 +40,6 @@ class CalendarState extends State<Calendar> {
     'Option 13',
     'Option 14',
   ];
-  String? dropdownValue;
 
   @override
   Widget build(BuildContext context) {
@@ -66,256 +70,130 @@ class CalendarState extends State<Calendar> {
             ),
             context: context,
             builder: (BuildContext context) {
-              return SizedBox(
-                height: 470,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Add Appointments/Walk-in',
-                            style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 17,
-                            ),
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Add Appointments/Walk-in',
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 17,
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.cancel, color: Colors.grey),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      const Text('Select contact or leave empty for walk-in'),
-                      const SizedBox(height: 5),
-                      DropdownButtonFormField(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10),
                         ),
-                        menuMaxHeight: 400,
-                        decoration: const InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                            borderSide: BorderSide(color: Colors.green),
-                          ),
-                          contentPadding: EdgeInsets.all(20),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                            borderSide: BorderSide(color: Colors.green),
-                          ),
-                          hintText: 'N/A',
-                          hintStyle: TextStyle(color: Colors.grey),
-                        ),
-                        items: options.map(
-                          (String value) {
-                            return DropdownMenuItem(
-                              value: value,
-                              child: Text(value),
-                            );
+                        IconButton(
+                          icon: const Icon(Icons.cancel, color: Colors.grey),
+                          onPressed: () {
+                            Navigator.pop(context);
                           },
-                        ).toList(),
-                        onChanged: (String? value) {
-                          setState(() {
-                            dropdownValue = value.toString();
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      const Text('Select Service'),
-                      const SizedBox(height: 5),
-                      DropdownButtonFormField(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10),
                         ),
-                        menuMaxHeight: 400,
-                        decoration: const InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                            borderSide: BorderSide(color: Colors.green),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    const Text('Select contact or leave empty for walk-in'),
+                   
+                    const SizedBox(height: 5),
+                    _dropdownTextField(
+                      controller: _contactControoler,
+                      optionSheet: () {
+                      _optionBottomSheet(
+                        
+                        _contactControoler, options, context);
+                    }),
+                     const SizedBox(height: 5),
+                    const SizedBox(height: 10),
+                    const Text('Select Service'),
+                    _dropdownTextField(
+                       controller: _serviceControoler,
+                      optionSheet: () {
+                      _optionBottomSheet(_serviceControoler, options, context);
+                    }),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('Date'),
+                              _dropdownTextField(
+                                 controller: _dateControoler,
+                                optionSheet: () {
+                                _optionBottomSheet(
+                                    _dateControoler, options, context);
+                              }),
+                            ],
                           ),
-                          contentPadding: EdgeInsets.all(20),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                            borderSide: BorderSide(color: Colors.green),
-                          ),
-                          hintText: 'Haircut',
-                          hintStyle: TextStyle(color: Colors.grey),
                         ),
-                        items: options.map(
-                          (String value) {
-                            return DropdownMenuItem(
-                              value: value,
-                              child: Text(value),
-                            );
-                          },
-                        ).toList(),
-                        onChanged: (String? value) {
-                          setState(() {
-                            dropdownValue = value.toString();
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text('Date'),
-                                DropdownButtonFormField(
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(10),
-                                  ),
-                                  menuMaxHeight: 400,
-                                  decoration: const InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                      borderSide:
-                                          BorderSide(color: Colors.green),
-                                    ),
-                                    contentPadding: EdgeInsets.all(20),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                      borderSide:
-                                          BorderSide(color: Colors.green),
-                                    ),
-                                    hintText: 'Today',
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                  ),
-                                  items: options.map(
-                                    (String value) {
-                                      return DropdownMenuItem(
-                                        value: value,
-                                        child: Text(value),
-                                      );
-                                    },
-                                  ).toList(),
-                                  onChanged: (String? value) {
-                                    setState(() {
-                                      dropdownValue = value.toString();
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
+                        const SizedBox(width: 40),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('Time Slot'),
+                              _dropdownTextField(
+                                  controller: _timeControoler,
+                                optionSheet: () {
+                                _optionBottomSheet(
+                                    _timeControoler, options, context);
+                              }),
+                            ],
                           ),
-                          const SizedBox(width: 40),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text('Time Slot'),
-                                DropdownButtonFormField(
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(10),
-                                  ),
-                                  menuMaxHeight: 400,
-                                  decoration: const InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                      borderSide:
-                                          BorderSide(color: Colors.green),
-                                    ),
-                                    contentPadding: EdgeInsets.all(20),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                      borderSide:
-                                          BorderSide(color: Colors.green),
-                                    ),
-                                    hintText: '4:00-4:45am',
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                  ),
-                                  items: options.map(
-                                    (String value) {
-                                      return DropdownMenuItem(
-                                        value: value,
-                                        child: Text(value),
-                                      );
-                                    },
-                                  ).toList(),
-                                  onChanged: (String? value) {
-                                    setState(() {
-                                      dropdownValue = value.toString();
-                                    });
-                                  },
-                                ),
-                              ],
+                        ),
+                      ],
+                    ),
+                    Expanded(child: Container()),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              const Color(0xFFEEEEEE),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                const Color(0xFFEEEEEE),
-                              ),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  // side: BorderSide(color: Colors.red),
-                                ),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                // side: BorderSide(color: Colors.red),
                               ),
                             ),
-                            child: const Text(
-                              'CANCEL',
-                              style: TextStyle(color: Colors.grey),
+                          ),
+                          child: const Text(
+                            'CANCEL',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        TextButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              const Color(0xFF4CAF50),
+                            ),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                // side: BorderSide(color: Colors.red),
+                              ),
                             ),
                           ),
-                          const SizedBox(width: 10),
-                          TextButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                const Color(0xFF4CAF50),
-                              ),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  // side: BorderSide(color: Colors.red),
-                                ),
-                              ),
-                            ),
-                            child: const Text(
-                              'SAVE',
-                              style: TextStyle(color: Colors.white),
-                            ),
+                          child: const Text(
+                            'SAVE',
+                            style: TextStyle(color: Colors.white),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               );
             },
@@ -371,5 +249,60 @@ class CalendarState extends State<Calendar> {
         ),
       ),
     );
+  }
+
+  _dropdownTextField({required TextEditingController controller,
+    required VoidCallback optionSheet}) {
+    return TextField(
+      onTap:    optionSheet,
+      readOnly: true,
+      controller: controller,
+      decoration: const InputDecoration(
+        suffixIcon: Icon(Icons.arrow_drop_down),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+          borderSide: BorderSide(color: Colors.green),
+        ),
+        contentPadding: EdgeInsets.all(20),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
+          borderSide: BorderSide(color: Colors.green),
+        ),
+        hintText: 'N/A',
+        hintStyle: TextStyle(color: Colors.grey),
+      ),
+    );
+  }
+
+  _optionBottomSheet(TextEditingController controller, List<String> options,
+      BuildContext context) {
+    showModalBottomSheet(
+        // backgroundColor: Colors.transparent.withOpacity(0.1),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+          ),
+        ),
+        context: context,
+        builder: ((context) => ListView.separated(
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  controller.text = options[index];
+                  Navigator.pop(context);
+                },
+                child: ListTile(
+                  title: Text(options[index]),
+                ),
+              );
+            },
+            separatorBuilder: ((context, index) =>
+                const Divider(color: Colors.grey)),
+            itemCount: options.length)));
   }
 }
