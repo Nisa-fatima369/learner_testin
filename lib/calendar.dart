@@ -1,11 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
 
-  static const String id = 'calendar';
+  static const String id = 'Calendar';
 
   @override
   State<Calendar> createState() => CalendarState();
@@ -13,10 +12,10 @@ class Calendar extends StatefulWidget {
 
 class CalendarState extends State<Calendar> {
   int selectedIndex = 0;
-  TextEditingController _contactControoler = TextEditingController();
-  TextEditingController _serviceControoler = TextEditingController();
-  TextEditingController _dateControoler = TextEditingController();
-  TextEditingController _timeControoler = TextEditingController();
+  final TextEditingController _contactControoler = TextEditingController();
+  final TextEditingController _serviceControoler = TextEditingController();
+  final TextEditingController _dateControoler = TextEditingController();
+  final TextEditingController _timeControoler = TextEditingController();
 
   void onItemTapped(int index) {
     setState(() {
@@ -96,23 +95,22 @@ class CalendarState extends State<Calendar> {
                     ),
                     const SizedBox(height: 20),
                     const Text('Select contact or leave empty for walk-in'),
-                   
                     const SizedBox(height: 5),
                     _dropdownTextField(
-                      controller: _contactControoler,
-                      optionSheet: () {
-                      _optionBottomSheet(
-                        
-                        _contactControoler, options, context);
-                    }),
-                     const SizedBox(height: 5),
+                        controller: _contactControoler,
+                        optionSheet: () {
+                          _optionBottomSheet(
+                              _contactControoler, options, context);
+                        }),
+                    const SizedBox(height: 5),
                     const SizedBox(height: 10),
                     const Text('Select Service'),
                     _dropdownTextField(
-                       controller: _serviceControoler,
-                      optionSheet: () {
-                      _optionBottomSheet(_serviceControoler, options, context);
-                    }),
+                        controller: _serviceControoler,
+                        optionSheet: () {
+                          _optionBottomSheet(
+                              _serviceControoler, options, context);
+                        }),
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,11 +121,11 @@ class CalendarState extends State<Calendar> {
                             children: [
                               const Text('Date'),
                               _dropdownTextField(
-                                 controller: _dateControoler,
-                                optionSheet: () {
-                                _optionBottomSheet(
-                                    _dateControoler, options, context);
-                              }),
+                                  controller: _dateControoler,
+                                  optionSheet: () {
+                                    _optionBottomSheet(
+                                        _dateControoler, options, context);
+                                  }),
                             ],
                           ),
                         ),
@@ -139,10 +137,10 @@ class CalendarState extends State<Calendar> {
                               const Text('Time Slot'),
                               _dropdownTextField(
                                   controller: _timeControoler,
-                                optionSheet: () {
-                                _optionBottomSheet(
-                                    _timeControoler, options, context);
-                              }),
+                                  optionSheet: () {
+                                    _optionBottomSheet(
+                                        _timeControoler, options, context);
+                                  }),
                             ],
                           ),
                         ),
@@ -162,7 +160,6 @@ class CalendarState extends State<Calendar> {
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
-                                // side: BorderSide(color: Colors.red),
                               ),
                             ),
                           ),
@@ -251,10 +248,11 @@ class CalendarState extends State<Calendar> {
     );
   }
 
-  _dropdownTextField({required TextEditingController controller,
-    required VoidCallback optionSheet}) {
+  _dropdownTextField(
+      {required TextEditingController controller,
+      required VoidCallback optionSheet}) {
     return TextField(
-      onTap:    optionSheet,
+      onTap: optionSheet,
       readOnly: true,
       controller: controller,
       decoration: const InputDecoration(
@@ -281,28 +279,28 @@ class CalendarState extends State<Calendar> {
   _optionBottomSheet(TextEditingController controller, List<String> options,
       BuildContext context) {
     showModalBottomSheet(
-        // backgroundColor: Colors.transparent.withOpacity(0.1),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-          ),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
         ),
-        context: context,
-        builder: ((context) => ListView.separated(
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  controller.text = options[index];
-                  Navigator.pop(context);
-                },
-                child: ListTile(
-                  title: Text(options[index]),
-                ),
-              );
-            },
-            separatorBuilder: ((context, index) =>
-                const Divider(color: Colors.grey)),
-            itemCount: options.length)));
+      ),
+      context: context,
+      builder: ((context) => ListView.separated(
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () {
+                controller.text = options[index];
+                Navigator.pop(context);
+              },
+              child: ListTile(
+                title: Text(options[index]),
+              ),
+            );
+          },
+          separatorBuilder: ((context, index) =>
+              const Divider(color: Colors.grey)),
+          itemCount: options.length)),
+    );
   }
 }

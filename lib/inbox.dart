@@ -1,72 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class Notifacation extends StatefulWidget {
-  const Notifacation({super.key});
+class Inbox extends StatefulWidget {
+  const Inbox({super.key});
 
-  static const String id = 'Notification';
+  static const String id = 'Inbox';
 
   @override
-  State<Notifacation> createState() => NotifacationState();
+  State<Inbox> createState() => _InboxState();
 }
 
-class NotifacationState extends State<Notifacation> {
-  // String? title;
+class _InboxState extends State<Inbox> {
+  int selectedIndex = 0;
+  void onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
-    String formattedDate = DateFormat('kk:mm').format(now);
+    String formattedDate = DateFormat('kk:mm a').format(now);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text(
-          'Notifications',
+          'Inbox',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 25,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        centerTitle: true,
       ),
-      body: ListView.separated(
-        shrinkWrap: true,
-        itemCount: 5,
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.grey.shade800,
-          indent: 60,
-          endIndent: 60,
-        ),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: ListTile(
-              leading: const Icon(
-                Icons.circle_outlined,
-                color: Colors.green,
-                size: 60,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: ListView.separated(
+          itemCount: 5,
+          separatorBuilder: (BuildContext context, int index) {
+            return Divider(
+              height: 30,
+              color: Colors.grey.shade300,
+              indent: 20,
+              endIndent: 20,
+            );
+          },
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              leading: Icon(
+                Icons.circle_rounded,
+                color: Colors.grey.shade200,
+                size: 70,
               ),
               title: const Text(
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+                'Brandon Diaz',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              subtitle: Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+              subtitle: const Text('Lorem ipsum dolor sit amet, ...'),
+              trailing: Padding(
+                padding: const EdgeInsets.only(bottom: 40),
                 child: Text(
                   formattedDate,
+                  style: TextStyle(color: Colors.grey.shade400),
                 ),
               ),
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -84,6 +83,8 @@ class NotifacationState extends State<Notifacation> {
             topRight: Radius.circular(20.0),
           ),
           child: BottomNavigationBar(
+            currentIndex: selectedIndex,
+            onTap: onItemTapped,
             selectedItemColor: Colors.lightGreenAccent.shade700,
             unselectedItemColor: Colors.grey.shade400,
             showUnselectedLabels: true,
