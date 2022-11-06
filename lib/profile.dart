@@ -20,21 +20,30 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                // width: double.infinity,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          bottom: false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.3,
                 color: Colors.transparent.withOpacity(0.2),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(top: 30, right: 30, bottom: 15),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
+                child: Stack(children: [
+                  Positioned.fill(
+                      child: Image.network(
+                    'https://images.unsplash.com/photo-1614850715649-1d0106293bd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+                    fit: BoxFit.cover,
+                  )),
+                  Positioned(
+                    height: 50,
+                    left: 0,
+                    right: 0,
+                    child: AppBar(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      centerTitle: true,
+                      title: const Text(
                         'Profile',
                         style: TextStyle(
                           color: Colors.white,
@@ -42,179 +51,168 @@ class _ProfileState extends State<Profile> {
                           fontSize: 24,
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton.icon(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(7.0),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {},
-                            icon: const Icon(Icons.camera_alt,
-                                color: Colors.white),
-                            label: const Text(
-                              'Add Cover Photo',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                      //
-                    ],
+                    ),
                   ),
+                  Positioned(
+                    right: 10,
+                    bottom: 10,
+                    child: TextButton.icon(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7.0),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                      icon: const Icon(Icons.camera_alt, color: Colors.white),
+                      label: const Text(
+                        'Add Cover Photo',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )
+                ]),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Hair Salon L.L.C',
+                      style: kLargeBoldTextStyle,
+                    ),
+                    // Expanded(child: SizedBox()),
+                    Text(
+                      'Location Here',
+                      style: kBoldTextStyle.copyWith(color: Colors.grey),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Hair Salon L.L.C',
-                    style: kLargeBoldTextStyle,
-                  ),
-                  // Expanded(child: SizedBox()),
+              Divider(
+                color: Colors.grey.shade200,
+                thickness: 7,
+                indent: 1,
+                endIndent: 1,
+              ),
+              // Container(
+              //   height: 300,
+              //   child: Padding(
+              //     padding:
+              //         const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              //     child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         // const Text('About Us', style: kBoldTextStyle),
+              //         // const Expanded(
+              //         //   child: ResueTextField(),
+              //         // ),
+              //         // Row(
+              //         //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         //   children: const [
+              //         //     Text('Our Services', style: kBoldTextStyle),
+              //         //     Text(
+              //         //       'View all',
+              //         //       style: kGreeenUnderlineText,
+              //         //     ),
+              //         //   ],
+              //         // ),
+              //         // Expanded(child: ResueTextField()),
+              //         // Expanded(child: SizedBox()),
+              //         // Expanded(child: ResueTextField()),
+              //         // Expanded(child: SizedBox()),
+              //         // const Text('Our Staff', style: kBoldTextStyle),
+              //         // Row(
+              //         //   mainAxisSize: MainAxisSize.min,
+              //         //   children: [
+              //         //     Expanded(
+              //         //       child: ListView.builder(
+              //         //         shrinkWrap: true,
+              //         //         scrollDirection: Axis.horizontal,
+              //         //         itemCount: 3,
+              //         //         itemBuilder: (BuildContext context, int index) =>
+              //         //             circleReuse(),
+              //         //       ),
+              //         //     ),
+              //         //   ],
+              //         // ),
+              //         // const Divider(),
+              //         Expanded(
+              //           child: Row(
+              //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //             children: const [
+              //               Text(
+              //                 'Business Hours',
+              //                 style: kBoldTextStyle,
+              //               ),
+              //               Text('Edit', style: kPrimaryColor),
+              //             ],
+              //           ),
+              //         ),
+              //         Expanded(
+              //           child: ListView.builder(
+              //             itemCount: 6,
+              //             itemBuilder: (BuildContext context, int index) {
+              //               return Row(
+              //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //                 children: [
+              //                   Text('Monday'),
+              //                   Expanded(child: SizedBox()),
+              //                   Text('8:00AM-7:00PM'),
+              //                 ],
+              //               );
+              //             },
+              //           ),
+              //         ),
+              Divider(
+                indent: 1,
+                endIndent: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
                   Text(
-                    'Location Here',
-                    style: kBoldTextStyle.copyWith(color: Colors.grey),
+                    'Reviews',
+                    style: kBoldTextStyle,
                   ),
+                  Text('View all', style: kGreeenUnderlineText),
                 ],
               ),
-            ),
-            Divider(
-              color: Colors.grey.shade200,
-              thickness: 7,
-              indent: 1,
-              endIndent: 1,
-            ),
-            Expanded(
-              child: Container(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // const Text('About Us', style: kBoldTextStyle),
-                      // const Expanded(
-                      //   child: ResueTextField(),
-                      // ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   children: const [
-                      //     Text('Our Services', style: kBoldTextStyle),
-                      //     Text(
-                      //       'View all',
-                      //       style: kGreeenUnderlineText,
-                      //     ),
-                      //   ],
-                      // ),
-                      // Expanded(child: ResueTextField()),
-                      // Expanded(child: SizedBox()),
-                      // Expanded(child: ResueTextField()),
-                      // Expanded(child: SizedBox()),
-                      // const Text('Our Staff', style: kBoldTextStyle),
-                      // Row(
-                      //   mainAxisSize: MainAxisSize.min,
-                      //   children: [
-                      //     Expanded(
-                      //       child: ListView.builder(
-                      //         shrinkWrap: true,
-                      //         scrollDirection: Axis.horizontal,
-                      //         itemCount: 3,
-                      //         itemBuilder: (BuildContext context, int index) =>
-                      //             circleReuse(),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // const Divider(),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text(
-                              'Business Hours',
-                              style: kBoldTextStyle,
-                            ),
-                            Text('Edit', style: kPrimaryColor),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: 6,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Monday'),
-                                Expanded(child: SizedBox()),
-                                Text('8:00AM-7:00PM'),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                      Divider(
-                        indent: 1,
-                        endIndent: 1,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
-                            'Reviews',
-                            style: kBoldTextStyle,
-                          ),
-                          Text('View all', style: kGreeenUnderlineText),
-                        ],
-                      ),
+              Column(
+                  children: List.generate(
+                6,
+                (index) => listTile(),
+              ))
 
-                      Expanded(
-                        child: ListView.separated(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount: 6,
-                          separatorBuilder: (BuildContext context, int index) {
-                            return Divider(color: Colors.grey.shade300);
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            return listTile();
-                          },
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            const Color(0xFFFFEBEE),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(Icons.delete, color: Colors.red),
-                            Text(
-                              'Account Delete',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+              //         TextButton(
+              //           onPressed: () {},
+              //           style: ButtonStyle(
+              //             backgroundColor: MaterialStateProperty.all(
+              //               const Color(0xFFFFEBEE),
+              //             ),
+              //           ),
+              //           child: Row(
+              //             mainAxisAlignment: MainAxisAlignment.center,
+              //             children: const [
+              //               Icon(Icons.delete, color: Colors.red),
+              //               Text(
+              //                 'Account Delete',
+              //                 style: TextStyle(color: Colors.red),
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
         ),
       ),
     );

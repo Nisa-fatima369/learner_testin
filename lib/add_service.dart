@@ -5,6 +5,8 @@ class AddService extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.pink.shade600);
+    return Column(
+      
+    );
   }
 }

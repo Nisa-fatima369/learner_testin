@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:learner_testin/add_service.dart';
 import 'package:learner_testin/calendar.dart';
@@ -52,7 +50,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // },
-      home: const AddService(),
+      home: const Profile(),
     );
   }
 }
