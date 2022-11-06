@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:learner_testin/notifacation.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
-
-  static const String id = 'Dashboard';
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -20,8 +19,8 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        centerTitle: true,
         leading: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Container(
@@ -34,7 +33,6 @@ class _DashboardState extends State<Dashboard> {
         ),
         title: const Text(
           'Dashboard',
-          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
           Padding(
@@ -42,7 +40,11 @@ class _DashboardState extends State<Dashboard> {
             child: IconButton(
               icon: const Icon(Icons.notifications),
               onPressed: () {
-                Navigator.pushNamed(context, 'Notification');
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return const Notifacation();
+                  }),
+                );
               },
             ),
           )

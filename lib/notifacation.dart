@@ -4,8 +4,6 @@ import 'package:intl/intl.dart';
 class Notifacation extends StatefulWidget {
   const Notifacation({super.key});
 
-  static const String id = 'Notification';
-
   @override
   State<Notifacation> createState() => NotifacationState();
 }
@@ -19,12 +17,9 @@ class NotifacationState extends State<Notifacation> {
     String formattedDate = DateFormat('kk:mm').format(now);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text(
           'Notifications',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+       
         ),
         leading: IconButton(
           icon: const Icon(
@@ -40,10 +35,8 @@ class NotifacationState extends State<Notifacation> {
         shrinkWrap: true,
         itemCount: 5,
         separatorBuilder: (context, index) => Divider(
-          color: Colors.grey.shade800,
-          indent: 60,
-          endIndent: 60,
-        ),
+       
+            ),
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -68,7 +61,6 @@ class NotifacationState extends State<Notifacation> {
           );
         },
       ),
-     
     );
   }
 }

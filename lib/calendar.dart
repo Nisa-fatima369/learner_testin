@@ -4,8 +4,6 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
 
-  static const String id = 'Calendar';
-
   @override
   State<Calendar> createState() => CalendarState();
 }
@@ -165,16 +163,13 @@ class CalendarState extends State<Calendar> {
                           ),
                           child: const Text(
                             'CANCEL',
-                            style: TextStyle(color: Colors.grey),
                           ),
                         ),
                         const SizedBox(width: 10),
                         TextButton(
                           onPressed: () {},
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                              const Color(0xFF4CAF50),
-                            ),
+                           
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
@@ -224,7 +219,6 @@ class CalendarState extends State<Calendar> {
           borderSide: BorderSide(color: Colors.green),
         ),
         hintText: 'N/A',
-        hintStyle: TextStyle(color: Colors.grey),
       ),
     );
   }
@@ -252,7 +246,7 @@ class CalendarState extends State<Calendar> {
             );
           },
           separatorBuilder: ((context, index) =>
-              const Divider(color: Colors.grey)),
+              const Divider()),
           itemCount: options.length)),
     );
   }

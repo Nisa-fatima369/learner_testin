@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:learner_testin/calendar.dart';
 import 'package:learner_testin/dashboard.dart';
 import 'package:learner_testin/inbox.dart';
@@ -26,7 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   _animateToPage(int pageIndex) {
-    _pageController.animateToPage(pageIndex,
+    _pageController.animateToPage(
+        pageIndex,
         duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
   }
 
@@ -34,13 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-          controller: _pageController,
-          onPageChanged: (value) {
-            setState(() {
-              selectedIndex = value;
-            });
-          },
-          children: screens),
+        controller: _pageController,
+        onPageChanged: (value) {
+          setState(() {
+            selectedIndex = value;
+          });
+        },
+        children: screens,
+      ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(

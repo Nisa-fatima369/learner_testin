@@ -4,8 +4,6 @@ import 'package:intl/intl.dart';
 class Inbox extends StatefulWidget {
   const Inbox({super.key});
 
-  static const String id = 'Inbox';
-
   @override
   State<Inbox> createState() => _InboxState();
 }
@@ -26,11 +24,9 @@ class _InboxState extends State<Inbox> {
       appBar: AppBar(
         title: const Text(
           'Inbox',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+         
+        
         ),
-        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
