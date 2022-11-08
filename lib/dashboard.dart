@@ -101,104 +101,110 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
             const SizedBox(height: 20),
-            Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
                 ),
-              ),
-              child: Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 25.0),
-                      child: Text(
-                        'June 29',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 25.0),
+                        child: Text(
+                          'June 29',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
                         ),
                       ),
-                    ),
-                    ListView.separated(
-                      itemCount: 4,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      separatorBuilder: (BuildContext context, int index) =>
-                          Divider(
-                        color: Colors.grey.shade300,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          leading: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 70,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.shade100,
-                                    offset: const Offset(4, 5),
+                      Expanded(
+                        child: ListView.separated(
+                          itemCount: 10,
+                          scrollDirection: Axis.vertical,
+                          separatorBuilder: (BuildContext context, int index) =>
+                              Divider(
+                            color: Colors.grey.shade300,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return ListTile(
+                              leading: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 70,
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.shade100,
+                                        offset: const Offset(4, 5),
+                                      ),
+                                    ],
+                                    shape: BoxShape.circle,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              title: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: const [
+                                  Text(
+                                    'JENNA ROY',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  // VerticalDivider(
+                                  //   thickness: 1.0,
+                                  //   color: Colors.black,
+                                  // ),
+                                  Text(
+                                    '\$200',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ],
-                                shape: BoxShape.circle,
-                                color: Colors.white,
                               ),
-                            ),
-                          ),
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: const [
-                              Text(
-                                'JENNA ROY',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
+                              trailing: TextButton(
+                                onPressed: () {},
+                                style: ButtonStyle(
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.white),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    ),
+                                  ),
+                                  // textStyle: MaterialStateProperty.all()),
+                                  backgroundColor: MaterialStateProperty.all(
+                                    const Color(0xFFFF9800),
+                                  ),
                                 ),
+                                child: const Text('Ongoing'),
                               ),
-                              // VerticalDivider(
-                              //   thickness: 1.0,
-                              //   color: Colors.black,
-                              // ),
-                              Text(
-                                '\$200',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ],
-                          ),
-                          trailing: TextButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                              ),
-                              // textStyle: MaterialStateProperty.all()),
-                              backgroundColor: MaterialStateProperty.all(
-                                const Color(0xFFFF9800),
-                              ),
-                            ),
-                            child: const Text('Ongoing'),
-                          ),
-                        );
-                      },
-                    )
-                  ],
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

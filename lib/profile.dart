@@ -97,187 +97,197 @@ class _ProfileState extends State<Profile> {
                 indent: 1,
                 endIndent: 1,
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'About Us',
-                      style: kBoldTextStyle,
-                    ),
-                    SizedBox(height: size.height * 0.009),
-                    Container(
-                      height: size.width * 0.27,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.shade200,
-                              blurRadius: 2,
-                              spreadRadius: 3),
-                        ],
-                      ),
-                      child: TextField(
-                        maxLines: null,
-                        maxLength: null,
-                        expands: true,
-                        textInputAction: TextInputAction.newline,
-                        keyboardType: TextInputType.multiline,
-                        decoration: InputDecoration(
-                          hintMaxLines: 3,
-                          hintStyle: TextStyle(color: Colors.grey.shade500),
-                          hintText:
-                              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                          isCollapsed: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(7),
-                            borderSide: BorderSide(color: Colors.grey.shade300),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(7),
-                            borderSide: BorderSide(color: Colors.grey.shade300),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(7),
-                            borderSide: BorderSide(color: Colors.grey.shade300),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 15),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: size.height * 0.02),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text('Our Services', style: kBoldTextStyle),
-                        Text('View all', style: kGreeenUnderlineText),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'About Us',
+                    style: kBoldTextStyle,
+                  ),
+                  SizedBox(height: size.height * 0.009),
+                  Container(
+                    height: size.width * 0.27,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.shade200,
+                            blurRadius: 2,
+                            spreadRadius: 3),
                       ],
                     ),
-                    SizedBox(height: size.height * 0.009),
-                    ReuseService(size: size),
-                    SizedBox(height: size.height * 0.005),
-                    ReuseService(size: size),
-                    SizedBox(height: size.height * 0.025),
-                    Container(
-                      height: size.height * 0.05,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                        boxShadow: [
-                          const BoxShadow(
-                              color: Colors.green,
-                              blurRadius: 0.5,
-                              spreadRadius: 1.0)
-                        ],
+                    child: TextField(
+                      maxLines: null,
+                      maxLength: null,
+                      expands: true,
+                      textInputAction: TextInputAction.newline,
+                      keyboardType: TextInputType.multiline,
+                      decoration: InputDecoration(
+                        hintMaxLines: 3,
+                        hintStyle: TextStyle(color: Colors.grey.shade500),
+                        hintText:
+                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                        isCollapsed: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(7),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(7),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(7),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 15),
                       ),
-                      child: OutlinedButton.icon(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const AddService(),
+                    ),
+                  ),
+                  SizedBox(height: size.height * 0.02),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text('Our Services', style: kBoldTextStyle),
+                      Text('View all', style: kGreeenUnderlineText),
+                    ],
+                  ),
+                  SizedBox(height: size.height * 0.009),
+                  ReuseService(size: size),
+                  SizedBox(height: size.height * 0.005),
+                  ReuseService(size: size),
+                  SizedBox(height: size.height * 0.025),
+                  Container(
+                    height: size.height * 0.05,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.green,
+                            blurRadius: 0.5,
+                            spreadRadius: 1.0)
+                      ],
+                    ),
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const AddService(),
+                          ),
+                        );
+                      },
+                      style: const ButtonStyle(),
+                      icon: const Icon(Icons.add, color: Colors.green),
+                      label: const Text(
+                        'Add Service',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: size.height * 0.025),
+                  const Text('Our Staff', style: kBoldTextStyle),
+                  SizedBox(height: size.height * 0.015),
+                  Container(
+                    height: 100,
+                    child: ListView.builder(
+                      itemCount: 20,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: size.width * 0.2,
+                            width: size.width * 0.2,
+                            color: Colors.white,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.grey.shade400,
+                                  radius: 30.0,
+                                ),
+                                const Text('Steven Bradi')
+                              ],
                             ),
-                          );
-                        },
-                        style: const ButtonStyle(),
-                        icon: const Icon(Icons.add, color: Colors.green),
-                        label: const Text(
-                          'Add Service',
-                          style: TextStyle(color: Colors.green),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: size.height * 0.025),
-                    const Text('Our Staff', style: kBoldTextStyle),
-                    SizedBox(height: size.height * 0.015),
-                    Row(
-                      children: List.generate(
-                        4,
-                        (index) => Container(
-                          height: size.width * 0.2,
-                          width: size.width * 0.2,
-                          color: Colors.white,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                backgroundColor: Colors.grey.shade400,
-                                radius: 30.0,
-                              ),
-                              const Text('Steven Bradi')
-                            ],
                           ),
-                        ),
-                      ),
+                        );
+                      },
                     ),
+                  ),
 
-                    Divider(
-                      indent: 2.0,
-                      endIndent: 2.0,
-                      color: Colors.grey.shade600,
-                    ),
-                    SizedBox(height: size.height * 0.009),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Business Hours', style: kBoldTextStyle),
-                        Text('Edit', style: kPrimaryColor),
-                      ],
-                    ),
-                    SizedBox(height: size.height * 0.009),
-                    Schedule(day: 'Monday', time: '8:00 AM - 7:00 PM'),
-                    Schedule(day: 'Tuesday', time: '8:00 AM - 7:00 PM'),
-                    Schedule(day: 'Wednesday', time: '8:00 AM - 7:00 PM'),
-                    Schedule(day: 'Thursday', time: '8:00 AM - 7:00 PM'),
-                    Schedule(day: 'Friday', time: '8:00 AM - 7:00 PM'),
-                    Schedule(day: 'Saturday', time: '8:30 AM - 4:00 PM'),
-                    Schedule(day: 'Sunday', time: 'Closed'),
-                    Divider(
-                      indent: 2.0,
-                      endIndent: 2.0,
-                      color: Colors.grey.shade600,
-                    ),
-                    SizedBox(height: size.height * 0.009),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          'Reviews',
-                          style: kBoldTextStyle,
-                        ),
-                        Text('View all', style: kGreeenUnderlineText),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        ListView.separated(
-                          itemCount: 1,
-                          separatorBuilder: (BuildContext context, int index) {
-                            return Divider(
-                              indent: 2.0,
-                              endIndent: 2.0,
-                              color: Colors.grey.shade600,
-                            );
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            return listTile();
-                          },
-                        ),
-                      ],
-                    ),
-                    // Column(
-                    //   children: List.generate(
-                    //     6,
-                    //     (index) => listTile(),
-                    //   ),
-                    // ),
-                    
-                  ],
-                ),
+                  Divider(
+                    indent: 2.0,
+                    endIndent: 2.0,
+                    color: Colors.grey.shade600,
+                  ),
+                  SizedBox(height: size.height * 0.009),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Business Hours', style: kBoldTextStyle),
+                      Text('Edit', style: kPrimaryColor),
+                    ],
+                  ),
+                  SizedBox(height: size.height * 0.009),
+                  Schedule(day: 'Monday', time: '8:00 AM - 7:00 PM'),
+                  Schedule(day: 'Tuesday', time: '8:00 AM - 7:00 PM'),
+                  const Schedule(day: 'Wednesday', time: '8:00 AM - 7:00 PM'),
+                  Schedule(day: 'Thursday', time: '8:00 AM - 7:00 PM'),
+                  Schedule(day: 'Friday', time: '8:00 AM - 7:00 PM'),
+                  Schedule(day: 'Saturday', time: '8:30 AM - 4:00 PM'),
+                  Schedule(day: 'Sunday', time: 'Closed'),
+                  Divider(
+                    indent: 2.0,
+                    endIndent: 2.0,
+                    color: Colors.grey.shade600,
+                  ),
+                  SizedBox(height: size.height * 0.009),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        'Reviews',
+                        style: kBoldTextStyle,
+                      ),
+                      Text('View all', style: kGreeenUnderlineText),
+                    ],
+                  ),
+                  ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 20,
+                      itemBuilder: (context, index) {
+                        return listTile();
+                      })
+
+                  // Column(
+                  //   children: [
+                  //     ListView.separated(
+                  //       itemCount: 1,
+                  //       separatorBuilder: (BuildContext context, int index) {
+                  //         return Divider(
+                  //           indent: 2.0,
+                  //           endIndent: 2.0,
+                  //           color: Colors.grey.shade600,
+                  //         );
+                  //       },
+                  //       itemBuilder: (BuildContext context, int index) {
+                  //         return listTile();
+                  //       },
+                  //     ),
+                  //   ],
+                  // ),
+                  // Column(
+                  //   children: List.generate(
+                  //     6,
+                  //     (index) => listTile(),
+                  //   ),
+                  // ),
+                ],
               ),
             ],
           ),
@@ -367,7 +377,6 @@ class ReuseService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * 0.27,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -383,7 +392,7 @@ class ReuseService extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Haircut', style: klessBoldText),
+                const Text('Haircut', style: klessBoldText),
                 Text(
                   '\$40.00',
                   style: klessBoldText.copyWith(fontWeight: FontWeight.w900),
@@ -392,13 +401,13 @@ class ReuseService extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.001),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: size.width * 0.5,
-                  child: Text(
-                      'Sunt in culpa qui officia deserunt mollit anim id est laborum'),
+                Expanded(
+                  child: const Text(
+                    'Sunt in culpa qui officia deserunt mollit anim id est laborum',
+                  ),
                 ),
+                SizedBox(width: 30),
                 Text('45 min', style: TextStyle(color: Colors.grey.shade400)),
               ],
             ),
