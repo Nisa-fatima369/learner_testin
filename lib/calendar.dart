@@ -15,11 +15,6 @@ class CalendarState extends State<Calendar> {
   final TextEditingController _dateControoler = TextEditingController();
   final TextEditingController _timeControoler = TextEditingController();
 
-  void onItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
 
   List<String> options = [
     'Option 1',
@@ -45,10 +40,8 @@ class CalendarState extends State<Calendar> {
 
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text(
           'Calendar',
-          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: SfCalendar(
@@ -58,7 +51,6 @@ class CalendarState extends State<Calendar> {
         child: const Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
-            // backgroundColor: Colors.transparent.withOpacity(0.1),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),

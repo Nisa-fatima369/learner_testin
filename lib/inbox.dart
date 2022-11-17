@@ -9,12 +9,7 @@ class Inbox extends StatefulWidget {
 }
 
 class _InboxState extends State<Inbox> {
-  int selectedIndex = 0;
-  void onItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
+ 
 
   @override
   Widget build(BuildContext context) {

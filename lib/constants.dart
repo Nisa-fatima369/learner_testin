@@ -25,3 +25,8 @@ const kGreeenUnderlineText = TextStyle(
 const kPrimaryColor = TextStyle(
   color: Colors.green,
 );
+
+const kVerylessBoldText = TextStyle(
+  color: Colors.black,
+  fontWeight: FontWeight.w500,
+);

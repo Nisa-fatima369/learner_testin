@@ -9,12 +9,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  int selectedIndex = 0;
-  void onItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {

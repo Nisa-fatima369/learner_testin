@@ -1,44 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:learner_testin/calendar.dart';
-import 'package:learner_testin/dashboard.dart';
-import 'package:learner_testin/inbox.dart';
-import 'package:learner_testin/profile.dart';
-import 'package:learner_testin/settings.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int selectedIndex = 0;
-  PageController _pageController = PageController();
-  List<Widget> screens = const [
-    Dashboard(),
-    Calendar(),
-    Inbox(),
-    Profile(),
-    Settings(),
-  ];
-
-  _animateToPage(int pageIndex) {
-    _pageController.animateToPage(pageIndex,
-        duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
-  }
+class Contacts extends StatelessWidget {
+  const Contacts({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (value) {
-          setState(() {
-            selectedIndex = value;
-          });
-        },
-        children: screens,
+      appBar: AppBar(
+        title: Text('Contacts'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -56,8 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
             topRight: Radius.circular(20.0),
           ),
           child: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            onTap: _animateToPage,
+            // currentIndex: selectedIndex,
+            // onTap: _animateToPage,
             showUnselectedLabels: true,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
